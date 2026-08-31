@@ -36,3 +36,6 @@ def encode_bulk_string(s):
     if s is None:
         return b"$-1\r\n"
     return(f"${len(s)}" + "\r\n" + s + "\r\n").encode()
+
+def encode_error(msg):
+    return f"-ERR {msg}\r\n".encode()
