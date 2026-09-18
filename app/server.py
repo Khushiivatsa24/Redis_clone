@@ -1,4 +1,5 @@
 from resp import parse_command, encode_simple_string, encode_bulk_string, encode_error
+from snapshot import save_snapshot, load_snapshot
 
 import socket
 import threading
@@ -57,6 +58,13 @@ def handle_client(conn, store, lock):
                     reply = encode_bulk_string(value)
                     
             conn.sendall(reply)
+        
+        elif command == "SAVE":
+            with lock:
+                save_snapshot(store)
+            reply = encode_simple_string("OK")
+            conn.sendall(reply)
+            
 
             
     conn.close() 
@@ -64,7 +72,7 @@ def handle_client(conn, store, lock):
 def main():
     server_socket = socket.create_server(("localhost", 6380), reuse_port=True)
     print("Listening on port 6380")
-    store = {}
+    store = load_snapshot()
     lock = threading.Lock()
     while True:
         conn, addr = server_socket.accept() # blocks until a client connects
