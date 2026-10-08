@@ -1,6 +1,6 @@
-# redis-clone
+# Redis-clone
 
-Built my own Redis server from scratch in Python, to understand how networking works under the hood.
+Built my own Redis server from scratch in Python to understand how networking works under the hood.
 
 It speaks the real RESP protocol, so `redis-cli` and other real Redis clients can talk to it directly.
 
@@ -22,6 +22,7 @@ cd <repo-name>
 python server.py
 ```
 
+
 Then, in another terminal:
 
 ```bash
@@ -29,6 +30,9 @@ redis-cli -p 6380 PING
 redis-cli -p 6380 SET foo bar
 redis-cli -p 6380 GET foo
 ```
+<p align="center">
+<img width="600" alt="redis-clone cli" src="https://github.com/user-attachments/assets/6e27fd53-0774-4a11-9c22-a28067787e40" />
+</p>
 
 
 
