@@ -65,7 +65,9 @@ def handle_client(conn, store, lock):
             reply = encode_simple_string("OK")
             conn.sendall(reply)
             
-
+        else:
+            reply = encode_error(f"unknown command {command}")
+            conn.sendall(reply)
             
     conn.close() 
 
