@@ -19,6 +19,7 @@ It speaks the real RESP protocol, so `redis-cli` and other real Redis clients ca
 ```bash
 git clone https://github.com/Khushiivatsa24/Redis_clone.git
 cd Redis_clone
+cd app
 python server.py
 ```
 
